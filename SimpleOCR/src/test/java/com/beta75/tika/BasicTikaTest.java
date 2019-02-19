@@ -11,7 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.xml.sax.SAXException;
 
-import com.beta75.Document;
+import com.beta75.domain.Document;
 import com.beta75.ocr.BasicOCRTest;
 
 public class BasicTikaTest {
