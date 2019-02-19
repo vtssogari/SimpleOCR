@@ -3,6 +3,8 @@ package com.beta75.tika;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.apache.tika.Tika;
 import org.apache.tika.config.TikaConfig;
@@ -17,11 +19,13 @@ import org.apache.tika.parser.ParseContext;
 import org.apache.tika.parser.Parser;
 import org.xml.sax.SAXException;
 
-import com.beta75.Document;
+import com.beta75.domain.Document;
 
 public class DocumentParser {
 
+	static Logger logger = Logger.getLogger(DocumentParser.class.getName());
 	public static Document parse(File file) throws IOException {
+		logger.log(Level.INFO,"Parsing " + file.getName());
 		Document doc = new Document(file);
 		try {
 			populate(doc, file);
@@ -34,6 +38,7 @@ public class DocumentParser {
 	}
 	
 	private static void populate(Document doc, File file) throws IOException, SAXException, TikaException {
+		logger.log(Level.INFO,"Extracting metadata " + file.getName());
 		Tika tika = new Tika();
 	    String filetype = tika.detect(file);	    
 	    doc.setMimetype(filetype);	 

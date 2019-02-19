@@ -1,4 +1,4 @@
-package com.beta75;
+package com.beta75.domain;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -18,6 +18,14 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 public class Document {
+	
+	static final MediaType PDF = MediaType.application("pdf");
+	static final String IMAGE = "image";
+	static final String AUDIO = "audio";
+	static final String TEXT = "text";
+	static final String VIDEO = "video";
+	static final String APPLICATION = "application";
+	
 	private String name;
 	private String extension;
 	private String path;
@@ -27,14 +35,10 @@ public class Document {
 	private List<String> pages;
 	private int contentSize;
 	private MediaType mediaType;
-
-	static final MediaType PDF = MediaType.application("pdf");
-	static final String IMAGE = "image";
-	static final String AUDIO = "audio";
-	static final String TEXT = "text";
-	static final String VIDEO = "video";
-	static final String APPLICATION = "application";
 	
+	private boolean ocred;
+	private List<String> horc;
+
 	public Document(File file) throws IOException{
 		this.name = file.getName();
 		this.extension = FilenameUtils.getExtension(this.name);
@@ -118,6 +122,22 @@ public class Document {
 
 	public void setContentSize(int contentSize) {
 		this.contentSize = contentSize;
+	}
+
+	public boolean isOcred() {
+		return ocred;
+	}
+
+	public void setOcred(boolean ocred) {
+		this.ocred = ocred;
+	}
+
+	public List<String> getHorc() {
+		return horc;
+	}
+
+	public void setHorc(List<String> horc) {
+		this.horc = horc;
 	}
 
 	public String content(){
