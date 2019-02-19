@@ -34,7 +34,7 @@ public class SimpleOCRCli implements Callable<Void> {
     @Option(names = "-o", required=true, description = "Output file for the result")
     public String output;
     
-    @Option(names = "-hocr", description = "include hOCR informaiton")
+    @Option(names = "-x", description = "include hOCR informaiton")
     public boolean hocr = false;
     
     public boolean error = false;
